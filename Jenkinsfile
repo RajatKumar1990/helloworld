@@ -19,7 +19,7 @@ pipeline {
 
      stage('Deploy Development') {
       environment {
-        APP_NAME= "helloworld_rk173346"
+        APP_NAME= "helloworld-rk173346"
         ENVIRONMENT= "Sandbox"
       }
       steps {
