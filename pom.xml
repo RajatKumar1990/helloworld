@@ -32,6 +32,7 @@
 				<extensions>true</extensions>
 				<configuration>
 				  <cloudHubDeployment>
+				        <objectStoreV2>true</objectStoreV2>
 						<uri>https://anypoint.mulesoft.com</uri>
 						<muleVersion>${mule.version}</muleVersion>
 						<!-- Deploy User Parameter -->
