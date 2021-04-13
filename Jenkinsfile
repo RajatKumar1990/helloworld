@@ -18,13 +18,7 @@ pipeline {
       }
     }
 
-    stage('Test') {
-      steps {
-          bat "mvn test"
-      }
-    }
-
-     stage('Deploy Development') {
+    stage('Deploy Development') {
       environment {
         ENVIRONMENT = 'Sandbox'
         APP_NAME = 'helloworld-rk173346'
