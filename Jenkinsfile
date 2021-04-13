@@ -3,7 +3,7 @@ pipeline {
   agent any
   environment {
     //adding a comment for the commit test
-    MULE_VERSION = '4.1.4'
+    MULE_VERSION = '4.3.0'
     DEPLOY_CREDS_USR = "rajat.kumar1@apisero.com"
     DEPLOY_CREDS_PSW = "Nike@2015"
     APP_NAME= "helloworld_rk173346"
@@ -20,7 +20,7 @@ pipeline {
 
     stage('Deploy Development') {
       environment {
-        ENVIRONMENT = 'Sandbox'
+        ENVIRONMENT = 'SANDBOX'
         APP_NAME = 'helloworld-rk173346'
       }
       steps {
