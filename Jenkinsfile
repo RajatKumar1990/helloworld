@@ -18,10 +18,15 @@ pipeline {
       }
     }
 
-    stage('Deploy Development') {
+     stage('Deploy Development') {
       environment {
-        ENVIRONMENT = 'SANDBOX'
-        APP_NAME = 'helloworld-rk173346'
+        MULE_VERSION = '4.3.0'
+        DEPLOY_CREDS_USR = "rajat.kumar1@apisero.com"
+        DEPLOY_CREDS_PSW = "Nike@2015"
+        APP_NAME= "helloworld_rk173346"
+        ENVIRONMENT= "SANDBOX"
+        BG = "Apisero Sandbox"
+        WORKER = "Micro"
       }
       steps {
             bat 'mvn -U -V -e -B -DskipTests deploy -DmuleDeploy -Dmule.version="%MULE_VERSION%" -Danypoint.username="%DEPLOY_CREDS_USR%" -Danypoint.password="%DEPLOY_CREDS_PSW%" -Dcloudhub.app="%APP_NAME%" -Dcloudhub.environment="%ENVIRONMENT%" -Dcloudhub.bg="%BG%" -Dcloudhub.worker="%WORKER%"'
