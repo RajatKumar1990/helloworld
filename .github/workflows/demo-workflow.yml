@@ -18,6 +18,6 @@ jobs:
         with:
           java-version: 1.8
       - name: Maven Package
-        run: mvn -B clean package -DskipTests
-      - name: Maven Verify
-        run: mvn -B clean verify
+        run: mvn -B -U -e -V clean -DskipTests package
+      - name: Maven Deploy
+        run: mvn -X -U -V -e -B -DskipTests deploy -DmuleDeploy -Dmule.version="4.3.0" -Danypoint.username="revanthBDR" -Danypoint.password="Rev@bdr1" -Dcloudhub.app="helloworld-rk173346" -Dcloudhub.environment="Sandbox" -Dcloudhub.bg="BDR-Engineering" -Dcloudhub.worker="Micro"
