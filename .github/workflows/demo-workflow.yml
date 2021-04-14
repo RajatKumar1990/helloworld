@@ -7,8 +7,8 @@ on:
 
 jobs:
 
-  package:
-    name: Unit Test
+  createJar:
+    name: Create Mule App Jar
     runs-on: ubuntu-18.04
 
     steps:
