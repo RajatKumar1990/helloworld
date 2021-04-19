@@ -6,7 +6,6 @@ on:
       - 'master'
 
 jobs:
-
   createJar:
     name: Create Mule App Jar
     runs-on: ubuntu-18.04
