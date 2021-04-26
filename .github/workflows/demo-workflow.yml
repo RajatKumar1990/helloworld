@@ -3,7 +3,7 @@ name: Git Action Based Mule Deployment
 on:
   push:
     branches:
-      - 'develop'
+      - 'master'
 
 jobs:
   deployJar:
