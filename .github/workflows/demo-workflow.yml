@@ -1,13 +1,13 @@
-name: Git Action Mule
+name: Git Action Based Mule Deployment
 
 on:
   push:
     branches:
-      - 'master'
+      - 'develop'
 
 jobs:
-  createJar:
-    name: Create Mule App Jar
+  deployJar:
+    name: Create App Jar and Deploy
     runs-on: ubuntu-18.04
     environment:
       name: Development
@@ -19,5 +19,7 @@ jobs:
           java-version: 1.8
       - name: Maven Package
         run: mvn -B -U -e -V clean -DskipTests package
+      - name: Maven Test
+        run: mvn -Dmaven.test.failure.ignore=true clean "test"
       - name: Maven Deploy
         run: mvn -X -U -V -e -B -DskipTests deploy -DmuleDeploy -Dmule.version="4.3.0" -Danypoint.username="${{ secrets.DEV_USER }}" -Danypoint.password="${{ secrets.DEV_PASSWORD }}" -Dcloudhub.app="helloworld-rk173346" -Dcloudhub.environment="Sandbox" -Dcloudhub.bg="BDR-Engineering" -Dcloudhub.worker="Micro"
