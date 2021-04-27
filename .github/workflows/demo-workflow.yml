@@ -17,6 +17,10 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 1.8
+      - name: Maven Package
+        run: mvn -B -U -e -V clean -DskipTests package
+      - name: Maven Deploy
+        run: mvn -X -U -V -e -B -DskipTests deploy -DmuleDeploy -Dmule.version="4.3.0" -Danypoint.username="${{ secrets.DEV_USER }}" -Danypoint.password="${{ secrets.DEV_PASSWORD }}" -Dcloudhub.app="helloworld-rk173346" -Dcloudhub.environment="Sandbox" -Dcloudhub.bg="BDR-Engineering" -Dcloudhub.worker="Micro"
       - name: Send email post job completion
         uses: dawidd6/action-send-mail@v3
         with:
@@ -27,8 +31,4 @@ jobs:
           subject: Workflow finished
           to: rajat.kumar1@apisero.com
           from: rk173346@gmail.com
-          body: Job completed successfully
-      - name: Maven Package
-        run: mvn -B -U -e -V clean -DskipTests package
-      - name: Maven Deploy
-        run: mvn -X -U -V -e -B -DskipTests deploy -DmuleDeploy -Dmule.version="4.3.0" -Danypoint.username="${{ secrets.DEV_USER }}" -Danypoint.password="${{ secrets.DEV_PASSWORD }}" -Dcloudhub.app="helloworld-rk173346" -Dcloudhub.environment="Sandbox" -Dcloudhub.bg="BDR-Engineering" -Dcloudhub.worker="Micro"
+          body: Job completed ${{job.status}}
