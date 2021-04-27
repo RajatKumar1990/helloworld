@@ -26,9 +26,9 @@ jobs:
         with:
           server_address: smtp.gmail.com
           server_port: 465
-          username: ${{secrets.MAIL_USERNAME}}
-          password: ${{secrets.MAIL_PASSWORD}}
+          username: rajat.guptadhn@gmail.com
+          password: ankur08555
           subject: Workflow finished
           to: rajat.kumar1@apisero.com
-          from: Me
+          from: rajat.guptadhn@gmail.com
           body: Job completed ${{job.status}}
