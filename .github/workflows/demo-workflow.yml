@@ -32,4 +32,3 @@ jobs:
           body: Job completed ${{job.status}}
           to: rajat.kumar1@apisero.com
           from: Me
-          
