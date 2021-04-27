@@ -21,8 +21,8 @@ jobs:
         run: mvn -B -U -e -V clean -DskipTests package
       - name: Maven Deploy
         run: mvn -X -U -V -e -B -DskipTests deploy -DmuleDeploy -Dmule.version="4.3.0" -Danypoint.username="${{ secrets.DEV_USER }}" -Danypoint.password="${{ secrets.DEV_PASSWORD }}" -Dcloudhub.app="helloworld-rk173346" -Dcloudhub.environment="Sandbox" -Dcloudhub.bg="BDR-Engineering" -Dcloudhub.worker="Micro"
-      - name: Send some mail
-        uses: wadeww/send-email-action@master
+      - name: Send email post job completion
+        uses: dawidd6/action-send-mail@v3
         with:
           server_address: smtp.gmail.com
           port: 465
